@@ -1,5 +1,5 @@
 const express = require('express')
-const Article = require('..models\Article.js')
+const Article = require('../models/article')
 const router = express.Router()
 
 router.post('/', async (req, res) => {

@@ -29,7 +29,11 @@ $('a').each((_, el) => {
     const page = await axios.get(link)
     const $$ = cheerio.load(page.data)
 
-    const title = $$('h1').text()
+    const title =
+  $$('meta[property="og:title"]').attr('content') ||
+  $$('h1').text().trim() ||
+  $$('title').text().trim()
+
     const content = $$('article').text()
 
     await Article.create({
